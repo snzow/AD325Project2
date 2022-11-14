@@ -49,7 +49,7 @@ public class HashTable<K,V> implements HashTableInterface{
 
     public Object get(Object key) {
 
-        int hashedKey = (Math.abs(key.hashCode()))%buckets.length;
+        int hashedKey = hash(key,0);
         int j = 0;
         while(true){
             Pair toCheck = buckets[hashedKey];
@@ -170,13 +170,18 @@ public class HashTable<K,V> implements HashTableInterface{
         return (Math.abs(key.hashCode()) + (j*j))% getCapacity();
     }
 
-    protected void dump(){
+    public void dump(){
         System.out.println("Table size: " + getSize() + " capacity: " +
                 getCapacity());
         for (int i = 0; i < buckets.length; i++) {
-            System.out.print(i + ": --");
             Pair node = buckets[i];
-            System.out.println("|");
+            if(node == null){
+                System.out.print(i + ": --");
+            }
+            else{
+                System.out.print(i + ": " + node.key);
+            }
+            System.out.println("");
         }
     }
 

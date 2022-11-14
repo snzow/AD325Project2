@@ -4,7 +4,7 @@ public interface CharacterInterface {
 
 
     /**
-     * modifies the characters hp, positive values are healing, negative are damage
+     * modifies the character's hp, positive values are healing, negative are damage
      * @param val the amount to modify the hp by
      */
     public void modHealth(double val);
